@@ -2,19 +2,111 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Bitcoin 2 Whitepaper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin 2: A Programmable Hard Money System on Solana</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
-        h1, h2 { color: #333; }
-        p { line-height: 1.6; }
+        body {
+            font-family: Times New Roman, serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            line-height: 1.5;
+            font-size: 12pt;
+        }
+        h1 {
+            text-align: center;
+            font-size: 14pt;
+            margin-bottom: 20px;
+        }
+        .author {
+            text-align: center;
+            font-size: 12pt;
+            margin-bottom: 20px;
+        }
+        .email {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .abstract {
+            margin: 30px 0;
+        }
+        h2 {
+            font-size: 12pt;
+            margin-top: 30px;
+        }
+        .references {
+            margin-top: 40px;
+        }
+        .reference {
+            text-indent: -20px;
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <h1>Bitcoin 2: A Programmable Hard Money System on Solana</h1>
-    <h2>Fredtoshi Kruegermoto</h2>
-    <p><i>February 22, 2025</i></p>
-    <p><b>Abstract</b></p>
-    <p>Bitcoin introduced a decentralized, scarce digital currency secured by computation... [paste the rest here]</p>
-    <!-- Add more sections as <h2> and <p> tags -->
+    <div class="author">Fredtoshi Kruegermoto</div>
+    <div class="email">fredtoshi@btc2.network</div>
+    <div class="date">February 22, 2025</div>
+    
+    <div class="abstract">
+        <h2>Abstract</h2>
+        <p>Bitcoin introduced a decentralized, scarce digital currency secured by computation, free from intermediaries. Yet, its limitations—slow transactions and rigid programmability—hinder its evolution. We propose Bitcoin 2 (BTC2), a token on the Solana blockchain, preserving Bitcoin's core economic principles while leveraging Solana's high-speed, programmable infrastructure. BTC2 maintains Bitcoin's 21 million supply cap and halving schedule, introduces a fair Dutch auction issuance, and ensures stability through automated liquidity. This system offers a "better Bitcoin" for a programmable world.</p>
+    </div>
+
+    <h2>1. Introduction</h2>
+    <p>Digital currencies promise trustless value transfer, but Bitcoin, while groundbreaking, trades speed and flexibility for security. Solana, a high-throughput blockchain, resolves these trade-offs, processing thousands of transactions per second at minimal cost. Bitcoin 2 (BTC2) unites Bitcoin's hard money ethos—fixed supply, predictable issuance—with Solana's scalability and programmability. By replacing energy-intensive mining with a transparent auction and stabilizing liquidity via decentralized exchange integration, BTC2 delivers a fair, efficient alternative. This paper outlines its design and implementation.</p>
+
+    <h2>2. Emission and Supply</h2>
+    <p>Bitcoin 2 replicates Bitcoin's issuance model:</p>
+    <p>Total Supply: 21,000,000 BTC2.<br>
+    Initial Reward: 50 BTC2 per block.<br>
+    Block Time: 10 minutes (aligned with Bitcoin via Solana's scheduling).<br>
+    Halving: Every 210,000 blocks (~4 years), reward halves until issuance ceases.</p>
+    <p>No pre-mine exists. The genesis block launches publicly after a one-month announcement, ensuring equal access. All code is open-source, auditable by the community.</p>
+
+    <h2>3. Block Issuance via Dutch Auction</h2>
+    <p>Traditional mining favors hardware concentration. BTC2 replaces this with a smart contract Dutch auction on Solana:</p>
+    <p>Each block's 50 BTC2 (adjusted post-halving) is offered at Bitcoin's current market price in SOL (e.g., ~450 SOL at $68,000 BTC and $150 SOL).<br>
+    The price decreases every 5 seconds until a bidder purchases the block.<br>
+    Bids are executed via Solana's transaction system, transparent and permissionless.</p>
+    <p>This ensures fairness—anyone with SOL can participate—and ties BTC2's value to market dynamics without centralized control.</p>
+
+    <h2>4. Liquidity Stabilization</h2>
+    <p>To counter sell pressure, proceeds from each auction are redeployed:</p>
+    <p>SOL paid for a block is sent to Raydium, a decentralized exchange on Solana.<br>
+    A smart contract automatically buys BTC2, adding it to a liquidity pool (BTC2/SOL).<br>
+    This mechanism supports price stability and incentivizes holding over immediate dumping.</p>
+
+    <h2>5. Security</h2>
+    <p>BTC2 inherits Solana's consensus security—proof-of-history and proof-of-stake—offering robust protection against double-spending and Sybil attacks. While less computationally intensive than Bitcoin's proof-of-work, Solana's design has proven resilient at scale. BTC2's smart contracts are minimal, reducing attack surfaces, and fully auditable.</p>
+
+    <h2>6. Transactions</h2>
+    <p>BTC2 operates as a native Solana token, enabling:</p>
+    <p>Speed: Sub-second confirmations versus Bitcoin's 10-minute average.<br>
+    Programmability: Smart contract compatibility for DeFi, NFTs, and beyond.<br>
+    Cost: Fees below $0.01, compared to Bitcoin's variable rates.</p>
+    <p>Users interact via Solana wallets, with BTC2 transferable as easily as SOL or SPL tokens.</p>
+
+    <h2>7. Valuation Considerations</h2>
+    <p>Initial BTC2 pricing emerges from the auction's first block. If Bitcoin trades at 450 SOL and demand is high, early blocks may settle near 5-10 SOL per BTC2. The Raydium buyback creates a floor, but market perception—balancing Bitcoin's brand against BTC2's untested status—will drive volatility. Long-term value hinges on adoption and utility.</p>
+
+    <h2>8. Implementation</h2>
+    <p>The system comprises:</p>
+    <p>Auction Contract: Executes the Dutch auction, verifiable on-chain.<br>
+    Liquidity Contract: Manages SOL-to-BTC2 purchases on Raydium.<br>
+    Token Standard: BTC2 adheres to Solana's SPL token framework.</p>
+    <p>Launch occurs March 22, 2025, with source code released February 22, 2025, for review. Miners (bidders) require only a Solana wallet and SOL.</p>
+
+    <h2>9. Conclusion</h2>
+    <p>Bitcoin 2 merges Bitcoin's scarcity with Solana's agility, offering a decentralized, programmable currency for the future. Its fair launch, auction-based issuance, and liquidity design eliminate pre-mines and insider advantages. While not as battle-tested as Bitcoin, BTC2 trades marginal security for vast utility. We invite the community to critique, contribute, and join this experiment in hard money evolution.</p>
+
+    <div class="references">
+        <h2>References</h2>
+        <div class="reference">Nakamoto, S. (2008). Bitcoin: A Peer-to-Peer Electronic Cash System.</div>
+        <div class="reference">Yakovenko, A. (2018). Solana: A New Architecture for a High-Performance Blockchain.</div>
+        <div class="reference">Raydium Protocol (2021). Automated Market Maker Design on Solana.</div>
+    </div>
 </body>
 </html>
