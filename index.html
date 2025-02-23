@@ -73,11 +73,39 @@
     Bids are executed via Solana's transaction system, transparent and permissionless.</p>
     <p>This ensures fairness—anyone with SOL can participate—and ties BTC2's value to market dynamics without centralized control.</p>
 
+    <pre style="font-family: monospace; line-height: 1.2; margin: 20px 0; overflow-x: auto;">
+Dutch Auction Mechanism
+
+Price (SOL)
+    ^
+450 |  \                Block Reward: 50 BTC2
+    |   \               Start: BTC Price in SOL
+    |    \              Decrease: Every 5s
+    |     \             End: When bid received
+    |      \
+  0 |_______\___________>
+    0s     300s    Time</pre>
+
     <h2>4. Liquidity Stabilization</h2>
     <p>To counter sell pressure, proceeds from each auction are redeployed:</p>
     <p>SOL paid for a block is sent to Raydium, a decentralized exchange on Solana.<br>
     A smart contract automatically buys BTC2, adding it to a liquidity pool (BTC2/SOL).<br>
     This mechanism supports price stability and incentivizes holding over immediate dumping.</p>
+
+    <pre style="font-family: monospace; line-height: 1.2; margin: 20px 0; overflow-x: auto;">
+Liquidity Stabilization Flow
+
+    +----------+     SOL     +-------------+
+    |  Bidder  |----------->| Dutch       |
+    +----------+            | Auction     |
+          ^                 +-------------+
+          |                       |
+          | BTC2                  | SOL
+          |                       v
+    +----------+     BTC2    +-------------+
+    | Liquidity|<-----------| Raydium     |
+    | Pool     |            | DEX         |
+    +----------+            +-------------+</pre>
 
     <h2>5. Security</h2>
     <p>BTC2 inherits Solana's consensus security—proof-of-history and proof-of-stake—offering robust protection against double-spending and Sybil attacks. While less computationally intensive than Bitcoin's proof-of-work, Solana's design has proven resilient at scale. BTC2's smart contracts are minimal, reducing attack surfaces, and fully auditable.</p>
